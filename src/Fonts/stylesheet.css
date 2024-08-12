@@ -1,0 +1,168 @@
+@font-face {
+    font-family: 'Bw Nista Grotesk';
+    src: url('BwNistaGrotesk-Bold.eot');
+    src: local('Bw Nista Grotesk Bold'), local('BwNistaGrotesk-Bold'),
+        url('BwNistaGrotesk-Bold.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-Bold.woff2') format('woff2'),
+        url('BwNistaGrotesk-Bold.woff') format('woff'),
+        url('BwNistaGrotesk-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bw Nista Grotesk';
+    src: url('BwNistaGrotesk-Black.eot');
+    src: local('Bw Nista Grotesk Black'), local('BwNistaGrotesk-Black'),
+        url('BwNistaGrotesk-Black.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-Black.woff2') format('woff2'),
+        url('BwNistaGrotesk-Black.woff') format('woff'),
+        url('BwNistaGrotesk-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bw Nista Grotesk';
+    src: url('BwNistaGrotesk-BlackItalic.eot');
+    src: local('Bw Nista Grotesk Black Italic'), local('BwNistaGrotesk-BlackItalic'),
+        url('BwNistaGrotesk-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-BlackItalic.woff2') format('woff2'),
+        url('BwNistaGrotesk-BlackItalic.woff') format('woff'),
+        url('BwNistaGrotesk-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bw Nista Grotesk';
+    src: url('BwNistaGrotesk-BoldItalic.eot');
+    src: local('Bw Nista Grotesk Bold Italic'), local('BwNistaGrotesk-BoldItalic'),
+        url('BwNistaGrotesk-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-BoldItalic.woff2') format('woff2'),
+        url('BwNistaGrotesk-BoldItalic.woff') format('woff'),
+        url('BwNistaGrotesk-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bw Nista Grotesk';
+    src: url('BwNistaGrotesk-ExtraBold.eot');
+    src: local('Bw Nista Grotesk ExtraBold'), local('BwNistaGrotesk-ExtraBold'),
+        url('BwNistaGrotesk-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-ExtraBold.woff2') format('woff2'),
+        url('BwNistaGrotesk-ExtraBold.woff') format('woff'),
+        url('BwNistaGrotesk-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bw Nista Grotesk ExtraBold Ita';
+    src: url('BwNistaGrotesk-ExtBdIta.eot');
+    src: local('Bw Nista Grotesk ExtBd Ita'), local('BwNistaGrotesk-ExtBdIta'),
+        url('BwNistaGrotesk-ExtBdIta.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-ExtBdIta.woff2') format('woff2'),
+        url('BwNistaGrotesk-ExtBdIta.woff') format('woff'),
+        url('BwNistaGrotesk-ExtBdIta.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bw Nista Grotesk';
+    src: url('BwNistaGrotesk-ThinItalic.eot');
+    src: local('Bw Nista Grotesk Thin Italic'), local('BwNistaGrotesk-ThinItalic'),
+        url('BwNistaGrotesk-ThinItalic.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-ThinItalic.woff2') format('woff2'),
+        url('BwNistaGrotesk-ThinItalic.woff') format('woff'),
+        url('BwNistaGrotesk-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bw Nista Grotesk';
+    src: url('BwNistaGrotesk-LightItalic.eot');
+    src: local('Bw Nista Grotesk Light Italic'), local('BwNistaGrotesk-LightItalic'),
+        url('BwNistaGrotesk-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-LightItalic.woff2') format('woff2'),
+        url('BwNistaGrotesk-LightItalic.woff') format('woff'),
+        url('BwNistaGrotesk-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bw Nista Grotesk Regular';
+    src: url('BwNistaGrotesk-RegularItalic.eot');
+    src: local('Bw Nista Grotesk Regular Italic'), local('BwNistaGrotesk-RegularItalic'),
+        url('BwNistaGrotesk-RegularItalic.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-RegularItalic.woff2') format('woff2'),
+        url('BwNistaGrotesk-RegularItalic.woff') format('woff'),
+        url('BwNistaGrotesk-RegularItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bw Nista Grotesk';
+    src: url('BwNistaGrotesk-Regular.eot');
+    src: local('Bw Nista Grotesk Regular'), local('BwNistaGrotesk-Regular'),
+        url('BwNistaGrotesk-Regular.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-Regular.woff2') format('woff2'),
+        url('BwNistaGrotesk-Regular.woff') format('woff'),
+        url('BwNistaGrotesk-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bw Nista Grotesk';
+    src: url('BwNistaGrotesk-MediumItalic.eot');
+    src: local('Bw Nista Grotesk Medium Italic'), local('BwNistaGrotesk-MediumItalic'),
+        url('BwNistaGrotesk-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-MediumItalic.woff2') format('woff2'),
+        url('BwNistaGrotesk-MediumItalic.woff') format('woff'),
+        url('BwNistaGrotesk-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bw Nista Grotesk';
+    src: url('BwNistaGrotesk-Medium.eot');
+    src: local('Bw Nista Grotesk Medium'), local('BwNistaGrotesk-Medium'),
+        url('BwNistaGrotesk-Medium.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-Medium.woff2') format('woff2'),
+        url('BwNistaGrotesk-Medium.woff') format('woff'),
+        url('BwNistaGrotesk-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bw Nista Grotesk';
+    src: url('BwNistaGrotesk-Thin.eot');
+    src: local('Bw Nista Grotesk Thin'), local('BwNistaGrotesk-Thin'),
+        url('BwNistaGrotesk-Thin.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-Thin.woff2') format('woff2'),
+        url('BwNistaGrotesk-Thin.woff') format('woff'),
+        url('BwNistaGrotesk-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bw Nista Grotesk';
+    src: url('BwNistaGrotesk-Light.eot');
+    src: local('Bw Nista Grotesk Light'), local('BwNistaGrotesk-Light'),
+        url('BwNistaGrotesk-Light.eot?#iefix') format('embedded-opentype'),
+        url('BwNistaGrotesk-Light.woff2') format('woff2'),
+        url('BwNistaGrotesk-Light.woff') format('woff'),
+        url('BwNistaGrotesk-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
