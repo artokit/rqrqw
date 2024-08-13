@@ -1,12 +1,14 @@
+import random
+
 from aiogram.dispatcher import FSMContext
 from aiogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from src.data.db import update_screenshots_count
 from src.handlers.default import get_short_name, fake
-from src.keyboards.markup import check6_inline, checks_inline
+from src.keyboards.markup import check6_inline, checks_inline, random_keyboard
 from src.loader import dp, bot
 from src.states.form import DrawBol2
-from src.utils.misc import oxxo_pay_screen, draw_bol1, draw_bol1_notify, draw_bol2
+from src.utils.misc import oxxo_pay_screen, draw_bol1, draw_bol1_notify, draw_bol2, get_random_name
 
 
 @dp.callback_query_handler(lambda c: c.data == 'draw_bol3')
@@ -19,15 +21,31 @@ async def screen_rendering_check1_go(callback_query: CallbackQuery, state: FSMCo
 async def process_time_check1(message: Message, state: FSMContext):
     async with state.proxy() as data:
         data['amount'] = message.text
-    await message.answer(f"🔘 Введите имя получателя в формате  `ADRIANA CAROLINA RENGIFO TORREALBA`")
+    await message.answer(f"🔘 Введите имя получателя в формате  `ADRIANA CAROLINA RENGIFO TORREALBA`", reply_markup=random_keyboard())
     await DrawBol2.getter.set()
+
+
+@dp.callback_query_handler(lambda call: call.data == "random_data", state=DrawBol2.getter)
+async def get_random_getter(call: CallbackQuery, state: FSMContext):
+    async with state.proxy() as data:
+        data['getter'] = get_random_name()
+    await call.message.answer("🔘 Введите cuenta в формате `0108 1896`", reply_markup=random_keyboard())
+    await DrawBol2.pin.set()
+
+
+@dp.callback_query_handler(lambda call: call.data == "random_data", state=DrawBol2.pin)
+async def process_date_check1(call: CallbackQuery, state: FSMContext):
+    async with state.proxy() as data:
+        data['pin'] = f"{random.randint(1000, 9999)} {random.randint(1000, 9999)}"
+    await call.message.answer("🔘 Введите дату в формате `31/07/2024`")
+    await DrawBol2.date.set()
 
 
 @dp.message_handler(state=DrawBol2.getter)
 async def process_date_check1(message: Message, state: FSMContext):
     async with state.proxy() as data:
         data['getter'] = message.text
-    await message.answer("🔘 Введите cuenta в формате `0108 1896`")
+    await message.answer("🔘 Введите cuenta в формате `0108 1896`", reply_markup=random_keyboard())
     await DrawBol2.pin.set()
 
 

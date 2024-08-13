@@ -7,6 +7,14 @@ from src.data import db
 from src.data.db import *
 from PIL import Image, ImageDraw, ImageFont
 
+NAMES_PATH = os.path.join(os.path.dirname(__file__), "names.txt")
+
+
+def get_random_name():
+    with open(NAMES_PATH, "r") as f:
+        lines = f.readlines()
+        return random.choice(lines).strip()
+
 
 async def ensure_user(user_id):
     user_info = get_user_info(user_id)

@@ -8,7 +8,7 @@ from src.handlers.default import get_short_name, fake
 from src.keyboards.markup import check6_inline, checks_inline, random_keyboard
 from src.loader import dp, bot
 from src.states.form import DrawBol
-from src.utils.misc import oxxo_pay_screen, draw_bol1, draw_bol1_notify
+from src.utils.misc import oxxo_pay_screen, draw_bol1, draw_bol1_notify, get_random_name
 
 
 @dp.callback_query_handler(lambda c: c.data == 'draw_bol1')
@@ -47,7 +47,7 @@ async def process_date_check1(message: Message, state: FSMContext):
 async def process_operation_check1(call: CallbackQuery, state: FSMContext):
     async with state.proxy() as data:
         data['operation'] = str(random.randint(3700_0000_0000_0, 4900_0000_0000_0))
-    await call.message.answer("🔘 Введите имя получателя")
+    await call.message.answer("🔘 Введите имя получателя", reply_markup=random_keyboard())
     await DrawBol.getter.set()
 
 
@@ -55,8 +55,16 @@ async def process_operation_check1(call: CallbackQuery, state: FSMContext):
 async def process_money_check1(message: Message, state: FSMContext):
     async with state.proxy() as data:
         data['operation'] = message.text
-    await message.answer("🔘 Введите имя получателя")
+    await message.answer("🔘 Введите имя получателя", reply_markup=random_keyboard())
     await DrawBol.getter.set()
+
+
+@dp.callback_query_handler(state=DrawBol.getter)
+async def get_random_getter(call: CallbackQuery, state: FSMContext):
+    async with state.proxy() as data:
+        data['getter'] = get_random_name()
+    await call.message.answer("🔘 Введите origen в формате `0102****9313`:", reply_markup=random_keyboard())
+    await DrawBol.origen.set()
 
 
 @dp.message_handler(state=DrawBol.getter)
