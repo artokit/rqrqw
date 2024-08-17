@@ -873,3 +873,20 @@ def draw_bol5(client_name: str, banco: str, amount1: str, amount2: str):
     tink.save(bio, 'PNG')
     bio.seek(0)
     return bio
+
+
+def draw_bol6(pair: str, amount: str):
+    tink = Image.open(f"src/Image source/bol6.png")
+    font_path = "src/Fonts/"
+    font_pair = ImageFont.truetype(font_path + 'Roboto-Bold.ttf', 57)
+    font_amount = ImageFont.truetype(font_path + 'Roboto-Bold.ttf', 96)
+    d = ImageDraw.Draw(tink)
+
+    d.text((53, 261), pair, font=font_pair, fill=(51, 51, 51))
+    d.text((55, 410), f"+ {amount} Bs", font=font_amount, fill=(0, 203, 157))
+
+    bio = BytesIO()
+    bio.name = 'output.png'
+    tink.save(bio, 'PNG')
+    bio.seek(0)
+    return bio
