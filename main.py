@@ -1,8 +1,10 @@
+import asyncio
+
 from aiogram import executor, Dispatcher
 from aiogram.dispatcher.handler import current_handler, CancelHandler
 from aiogram.dispatcher.middlewares import BaseMiddleware
 from aiogram.types import Message
-from src.utils.misc import check_admin, check_staff, win_game_check, draw_bol1, draw_bol1_notify, draw_bol2
+from src.utils.misc import check_admin, check_staff, win_game_check, draw_bol1, draw_bol1_notify, draw_bol2, draw_bol5
 
 
 class AdminMiddleware(BaseMiddleware):
@@ -12,11 +14,16 @@ class AdminMiddleware(BaseMiddleware):
 
 
 # async def main():
-#     res = draw_bol2("1.800,00", "ADRIANA CAROLINA RENGIFO TORREALBA", "0108 1896", "31/07/2024")
+#     res = draw_bol5(
+#         "12345678912345678912",
+#         "Banco de\nVenezuela",
+#         "24 000",
+#         "5 462"
+#     )
 #     with open("hui.png", "wb") as f:
 #         f.write(res.read())
-#
-#
+
+
 # asyncio.run(main())
 
 if __name__ == "__main__":

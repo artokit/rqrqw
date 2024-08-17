@@ -829,3 +829,47 @@ def draw_bol2(amount, getter, pin, date):
     tink.save(bio, 'PNG')
     bio.seek(0)
     return bio
+
+
+def draw_bol4(client_name: str, amount1: str, amount2: str, card: str):
+    tink = Image.open(f"src/Image source/bol4.png")
+    font_path = "src/Fonts/"
+    font_client = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 13)
+    font_amount1 = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 13)
+    font_amount2 = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 13)
+    font_card = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 13)
+
+    d = ImageDraw.Draw(tink)
+    d.text((525, 465), client_name, font=font_client, fill=(100, 100, 100))
+    d.text((258, 654), f"{amount1} Bs (VEF)", font=font_amount1, fill=(100, 100, 100))
+    d.text((476, 654), f"{amount2} $ (USD)", font=font_amount2, fill=(100, 100, 100))
+    d.text((749, 654), card, font=font_card, fill=(100, 100, 100))
+
+    bio = BytesIO()
+    bio.name = 'output.png'
+    tink.save(bio, 'PNG')
+    bio.seek(0)
+    return bio
+
+
+def draw_bol5(client_name: str, banco: str, amount1: str, amount2: str):
+    tink = Image.open(f"src/Image source/bol5.png")
+    font_path = "src/Fonts/"
+    font_client = ImageFont.truetype(font_path + 'Roboto-Bold.ttf', 12)
+    font_banco = ImageFont.truetype(font_path + 'Roboto-Bold.ttf', 12)
+    font_amount1 = ImageFont.truetype(font_path + 'Roboto-Bold.ttf', 12)
+    font_amount2 = ImageFont.truetype(font_path + 'Roboto-Bold.ttf', 12)
+    d = ImageDraw.Draw(tink)
+    color = (65, 99, 109)
+    d.text((495, 359), client_name, font=font_client, fill=color)
+    d.text((495, 406), client_name, font=font_client, fill=color)
+    d.text((852, 351 if banco.count("\n") == 1 else 359), banco, font=font_banco, fill=color)
+    d.text((852, 398 if banco.count("\n") == 1 else 406), banco, font=font_banco, fill=color)
+    d.text((951, 359), amount1 + " Bs", font=font_amount1, fill=color)
+    d.text((1042, 359), amount2 + " USD", font=font_amount2, fill=color)
+
+    bio = BytesIO()
+    bio.name = 'output.png'
+    tink.save(bio, 'PNG')
+    bio.seek(0)
+    return bio

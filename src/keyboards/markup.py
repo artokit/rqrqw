@@ -54,6 +54,8 @@ def rendering_inline():
     markup.row(InlineKeyboardButton("🔘 Чек", callback_data="draw_bol1"))
     markup.row(InlineKeyboardButton("🔘 Чек с уведомлением", callback_data="draw_bol2"))
     markup.row(InlineKeyboardButton("🔘 Чек 2", callback_data="draw_bol3"))
+    markup.row(InlineKeyboardButton("🔘 PayPal", callback_data="draw_bol4"))
+    markup.row(InlineKeyboardButton("🔘 BID", callback_data="draw_bol5"))
     markup.row(InlineKeyboardButton('🏠 Домой', callback_data='home'))
     return markup
 

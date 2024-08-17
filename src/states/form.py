@@ -138,3 +138,17 @@ class DrawBol2(StatesGroup):
     getter = State()
     pin = State()
     date = State()
+
+
+class DrawBol4(StatesGroup):
+    client_name = State()
+    amount1 = State()
+    amount2 = State()
+    card = State()
+
+
+class DrawBol5(StatesGroup):
+    card = State()
+    bank = State()
+    amount1 = State()
+    amount2 = State()
