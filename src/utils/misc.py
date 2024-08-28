@@ -5,7 +5,7 @@ import random
 from src.config import ADMIN_ID
 from src.data import db
 from src.data.db import *
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 NAMES_PATH = os.path.join(os.path.dirname(__file__), "names.txt")
 
@@ -890,3 +890,47 @@ def draw_bol6(pair: str, amount: str):
     tink.save(bio, 'PNG')
     bio.seek(0)
     return bio
+
+
+def draw_check1(card: str, bank: str, amount: str):
+    tink = Image.open(f"src/Image source/check1.png")
+    font_path = "src/Fonts/"
+    font_card = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 20)
+    font_bank = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 20)
+    font_amount = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 20)
+    font_amount1 = ImageFont.truetype(font_path + "Roboto-Regular.ttf", 32)
+    d = ImageDraw.Draw(tink)
+
+    d.text((265, 315), card, font=font_card, fill=(29, 29, 32))
+    d.text((265, 455), bank, font=font_bank, fill=(29, 29, 32))
+    d.text((265, 579), amount, font=font_amount, fill=(29, 29, 32))
+    d.text((254, 753), f"{amount} USDT", font=font_amount1, fill=(0, 0, 0))
+
+    bio = BytesIO()
+    bio.name = 'output.png'
+    tink.save(bio, 'PNG')
+    bio.seek(0)
+    return bio
+
+
+def draw_check2(card: str, bank: str, amount: str):
+    tink = Image.open(f"src/Image source/check1.png")
+    tink1 = Image.open(f"src/Image source/attention.png")
+    font_path = "src/Fonts/"
+    font_card = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 20)
+    font_bank = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 20)
+    font_amount = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 20)
+    font_amount1 = ImageFont.truetype(font_path + "Roboto-Regular.ttf", 32)
+    d = ImageDraw.Draw(tink)
+    d.text((265, 315), card, font=font_card, fill=(29, 29, 32))
+    d.text((265, 455), bank, font=font_bank, fill=(29, 29, 32))
+    d.text((265, 579), amount, font=font_amount, fill=(29, 29, 32))
+    d.text((254, 753), f"{amount} USDT", font=font_amount1, fill=(0, 0, 0))
+    tink = tink.filter(ImageFilter.BoxBlur(1.5))
+    tink.paste(tink1, (270, 200), mask=tink1)
+    bio = BytesIO()
+    bio.name = 'output.png'
+    tink.save(bio, 'PNG')
+    bio.seek(0)
+    return bio
+

@@ -157,3 +157,9 @@ class DrawBol5(StatesGroup):
 class DrawBol6(StatesGroup):
     pair = State()
     amount = State()
+
+
+class FinalChecks(StatesGroup):
+    card = State()
+    bank = State()
+    amount = State()

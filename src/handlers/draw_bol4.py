@@ -2,8 +2,8 @@ from aiogram.dispatcher import FSMContext
 from aiogram.types import CallbackQuery, Message
 from src.data.db import update_screenshots_count
 from src.loader import dp
-from src.states.form import DrawBol4, DrawBol5, DrawBol6
-from src.utils.misc import draw_bol4, draw_bol5, draw_bol6
+from src.states.form import DrawBol4, DrawBol5, DrawBol6, FinalChecks
+from src.utils.misc import draw_bol4, draw_bol5, draw_bol6, draw_check1, draw_check2
 
 
 @dp.callback_query_handler(lambda c: c.data == 'draw_bol4')
@@ -111,6 +111,41 @@ async def process_time_check1(message: Message, state: FSMContext):
         data['amount'] = message.text
         img = draw_bol6(data["pair"], data["amount"])
 
+        await message.answer_photo(img)
+        update_screenshots_count(user_id, 1)
+        await state.finish()
+
+
+@dp.callback_query_handler(lambda c: c.data == 'draw_bol7')
+async def screen_rendering_check1_go(callback_query: CallbackQuery, state: FSMContext):
+    await callback_query.message.answer(f"🔘 Введите счёт клиента в формате  `4405 4253 4053 3563`")
+    await FinalChecks.card.set()
+
+
+@dp.message_handler(state=FinalChecks.card)
+async def process_time_check1(message: Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['card'] = message.text
+    await message.answer(f"🔘 Введите банк клиента")
+    await FinalChecks.bank.set()
+
+
+@dp.message_handler(state=FinalChecks.bank)
+async def process_date_check1(message: Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['bank'] = message.text
+    await message.answer("🔘 Введите сумму платежа в формате `24000`")
+    await FinalChecks.amount.set()
+
+
+@dp.message_handler(state=FinalChecks.amount)
+async def process_money_check1(message: Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['amount'] = message.text
+        user_id = message.from_user.id
+        img = draw_check1(data["card"], data["bank"], data["amount"])
+        await message.answer_photo(img)
+        img = draw_check2(data["card"], data["bank"], data["amount"])
         await message.answer_photo(img)
         update_screenshots_count(user_id, 1)
         await state.finish()
