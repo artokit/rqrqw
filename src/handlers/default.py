@@ -43,7 +43,7 @@ async def start_comm(callback_query: types.CallbackQuery):
 
 @dp.message_handler(text='㊙️ Отрисовать')
 async def show_rendering(message: types.Message):
-    await bot.send_photo(message.from_user.id, main_photo_url, caption='*㊙️ Выберите действие:*', reply_markup=rendering_inline())
+    await bot.send_photo(message.from_user.id, main_photo_url, caption='*㊙️ Выберите действие:*', reply_markup=checks())
 
 
 @dp.message_handler(text='🀄️ Информация')
@@ -58,7 +58,37 @@ async def show_rendering(callback_query: types.CallbackQuery):
     await bot.edit_message_caption(chat_id=callback_query.message.chat.id,
                                    message_id=callback_query.message.message_id,
                                    caption='*㊙️ Выберите действие:*',
-                                   reply_markup=rendering_inline())
+                                   reply_markup=checks())
+
+    await bot.answer_callback_query(callback_query.id)
+
+
+@dp.callback_query_handler(lambda c: c.data == 'rd')
+async def show_rendering(callback_query: types.CallbackQuery):
+    await bot.edit_message_caption(chat_id=callback_query.message.chat.id,
+                                   message_id=callback_query.message.message_id,
+                                   caption='*㊙️ Выберите действие:*',
+                                   reply_markup=rd_keyboard())
+
+    await bot.answer_callback_query(callback_query.id)
+
+
+@dp.callback_query_handler(lambda c: c.data == 'all_checks')
+async def show_rendering(callback_query: types.CallbackQuery):
+    await bot.edit_message_caption(chat_id=callback_query.message.chat.id,
+                                   message_id=callback_query.message.message_id,
+                                   caption='*㊙️ Выберите действие:*',
+                                   reply_markup=all_checks_keyboard())
+
+    await bot.answer_callback_query(callback_query.id)
+
+
+@dp.callback_query_handler(lambda c: c.data == 'all_in')
+async def show_rendering(callback_query: types.CallbackQuery):
+    await bot.edit_message_caption(chat_id=callback_query.message.chat.id,
+                                   message_id=callback_query.message.message_id,
+                                   caption='*㊙️ Выберите действие:*',
+                                   reply_markup=all_in_keyboard())
 
     await bot.answer_callback_query(callback_query.id)
 

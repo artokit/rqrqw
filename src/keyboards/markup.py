@@ -51,12 +51,40 @@ def profile_inline():
 
 def rendering_inline():
     markup = InlineKeyboardMarkup()
-    markup.row(InlineKeyboardButton("🔘 Чек", callback_data="draw_bol1"))
-    markup.row(InlineKeyboardButton("🔘 Чек с уведомлением", callback_data="draw_bol2"))
-    markup.row(InlineKeyboardButton("🔘 Чек 2", callback_data="draw_bol3"))
-    markup.row(InlineKeyboardButton("🔘 Чек 3", callback_data="draw_bol7"))
+    markup.row(InlineKeyboardButton("🔘 MEXC", callback_data="draw_bol6"))
+    markup.row(InlineKeyboardButton('🏠 Домой', callback_data='home'))
+    return markup
+
+
+def checks():
+    markup = InlineKeyboardMarkup()
+    markup.row(InlineKeyboardButton('РД', callback_data='rd'))
+    markup.row(InlineKeyboardButton('Чеки', callback_data='all_checks'))
+    markup.row(InlineKeyboardButton('Ставки', callback_data='all_in'))
+    markup.row(InlineKeyboardButton('🏠 Домой', callback_data='home'))
+    return markup
+
+
+def rd_keyboard():
+    markup = InlineKeyboardMarkup()
+    markup.row(InlineKeyboardButton("🔘 Комс 1", callback_data="draw_bol7"))
     markup.row(InlineKeyboardButton("🔘 PayPal", callback_data="draw_bol4"))
     markup.row(InlineKeyboardButton("🔘 BID", callback_data="draw_bol5"))
+    markup.row(InlineKeyboardButton('🏠 Домой', callback_data='home'))
+    return markup
+
+
+def all_checks_keyboard():
+    markup = InlineKeyboardMarkup()
+    markup.row(InlineKeyboardButton("🔘 Чек 1", callback_data="draw_bol1"))
+    markup.row(InlineKeyboardButton("🔘 Чек с уведомлением", callback_data="draw_bol2"))
+    markup.row(InlineKeyboardButton("🔘 Чек 2", callback_data="draw_bol3"))
+    markup.row(InlineKeyboardButton('🏠 Домой', callback_data='home'))
+    return markup
+
+
+def all_in_keyboard():
+    markup = InlineKeyboardMarkup()
     markup.row(InlineKeyboardButton("🔘 MEXC", callback_data="draw_bol6"))
     markup.row(InlineKeyboardButton('🏠 Домой', callback_data='home'))
     return markup
