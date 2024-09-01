@@ -163,3 +163,10 @@ class FinalChecks(StatesGroup):
     card = State()
     bank = State()
     amount = State()
+
+
+class NewCheck(StatesGroup):
+    amount = State()
+    date = State()
+    name = State()
+    card = State()

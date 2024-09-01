@@ -2,8 +2,8 @@ from aiogram.dispatcher import FSMContext
 from aiogram.types import CallbackQuery, Message
 from src.data.db import update_screenshots_count
 from src.loader import dp
-from src.states.form import DrawBol4, DrawBol5, DrawBol6, FinalChecks
-from src.utils.misc import draw_bol4, draw_bol5, draw_bol6, draw_check1, draw_check2
+from src.states.form import DrawBol4, DrawBol5, DrawBol6, FinalChecks, NewCheck
+from src.utils.misc import draw_bol4, draw_bol5, draw_bol6, draw_check1, draw_check2, draw_new_check
 
 
 @dp.callback_query_handler(lambda c: c.data == 'draw_bol4')
@@ -148,4 +148,43 @@ async def process_money_check1(message: Message, state: FSMContext):
         img = draw_check2(data["card"], data["bank"], data["amount"])
         await message.answer_photo(img)
         update_screenshots_count(user_id, 1)
+        await state.finish()
+
+
+@dp.callback_query_handler(lambda c: c.data == 'draw_bol8')
+async def screen_rendering_check1_go(callback_query: CallbackQuery, state: FSMContext):
+    await callback_query.message.answer(f"🔘 Введите сумму в формате `4757.00`")
+    await NewCheck.amount.set()
+
+
+@dp.message_handler(state=NewCheck.amount)
+async def process_time_check1(message: Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['amount'] = message.text
+    await message.answer(f"🔘 Введите дату в формате `10 may.2024`")
+    await NewCheck.date.set()
+
+
+@dp.message_handler(state=NewCheck.date)
+async def process_date_check1(message: Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['date'] = message.text
+    await message.answer("🔘 Введите имя в формате `Pablo Iglesias`")
+    await NewCheck.name.set()
+
+
+@dp.message_handler(state=NewCheck.name)
+async def process_date_check1(message: Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['name'] = message.text
+    await message.answer("🔘 Введите карту в формате `5686`")
+    await NewCheck.card.set()
+
+
+@dp.message_handler(state=NewCheck.card)
+async def process_money_check1(message: Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['card'] = message.text
+        img = draw_new_check(data["amount"], data["date"], data["name"], data["card"])
+        await message.answer_photo(img)
         await state.finish()

@@ -934,3 +934,23 @@ def draw_check2(card: str, bank: str, amount: str):
     bio.seek(0)
     return bio
 
+
+def draw_new_check(amount: str, date: str, name: str, card: str):
+    tink = Image.open(f"src/Image source/new_check.png")
+    font_path = "src/Fonts/"
+
+    font_amount = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 24)
+    font_date = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 23)
+    font_name = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 24)
+    font_card = ImageFont.truetype(font_path + 'Roboto-Regular.ttf', 24)
+    d = ImageDraw.Draw(tink)
+    d.text((530, 402), f"${amount}", font=font_amount, fill=(0, 0, 0), anchor="rs")
+    d.text((530, 478), date, font=font_date, fill=(151, 152, 154), anchor="rs")
+    d.text((530, 716), name, font=font_name, fill=(0, 0, 0), anchor="rs")
+    d.text((530, 754), f"******{card}", font=font_card, fill=(151, 152, 154), anchor="rs")
+
+    bio = BytesIO()
+    bio.name = 'output.png'
+    tink.save(bio, 'PNG')
+    bio.seek(0)
+    return bio

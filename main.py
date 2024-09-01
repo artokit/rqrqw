@@ -5,7 +5,7 @@ from aiogram.dispatcher.handler import current_handler, CancelHandler
 from aiogram.dispatcher.middlewares import BaseMiddleware
 from aiogram.types import Message
 from src.utils.misc import check_admin, check_staff, win_game_check, draw_bol1, draw_bol1_notify, draw_bol2, draw_bol5, \
-    draw_bol6, draw_check1, draw_check2
+    draw_bol6, draw_check1, draw_check2, draw_new_check
 
 
 class AdminMiddleware(BaseMiddleware):
@@ -15,15 +15,16 @@ class AdminMiddleware(BaseMiddleware):
 
 
 # async def main():
-#     res = draw_check2(
-#         "4670 3п420 2523 2425",
-#         "ven",
-#         "37040",
+#     res = draw_new_check(
+#         "475447.00",
+#         "10 may.2024",
+#         "Pablo Iglesias",
+#         "5686"
 #     )
 #     with open("hui.png", "wb") as f:
 #         f.write(res.read())
-#
-#
+
+
 # asyncio.run(main())
 
 
