@@ -59,7 +59,7 @@ def rendering_inline():
 def checks():
     markup = InlineKeyboardMarkup()
     markup.row(InlineKeyboardButton('РД', callback_data='rd'))
-    markup.row(InlineKeyboardButton('Чеки', callback_data='all_checks'))
+    markup.row(InlineKeyboardButton('Чеки', callback_data='geo'))
     markup.row(InlineKeyboardButton('Ставки', callback_data='all_in'))
     markup.row(InlineKeyboardButton('🏠 Домой', callback_data='home'))
     return markup
@@ -81,6 +81,35 @@ def all_checks_keyboard():
     markup.row(InlineKeyboardButton("🔘 Чек 2", callback_data="draw_bol3"))
     markup.row(InlineKeyboardButton("🔘 Чек Эквадор", callback_data="draw_bol8"))
     markup.row(InlineKeyboardButton('🏠 Домой', callback_data='home'))
+    return markup
+
+
+def get_random_name1_keyboard():
+    markup = InlineKeyboardMarkup()
+    markup.row(InlineKeyboardButton(text="Сгенерировать рандомное имя", callback_data='random_name1'))
+    return markup
+
+
+def get_ven_checks_keyboard():
+    markup = InlineKeyboardMarkup()
+    markup.row(InlineKeyboardButton("🔘 Чек 1", callback_data="draw_bol1"))
+    markup.row(InlineKeyboardButton("🔘 Чек с уведомлением", callback_data="draw_bol2"))
+    markup.row(InlineKeyboardButton("🔘 Чек 2", callback_data="draw_bol3"))
+    markup.row(InlineKeyboardButton('🏠 Домой', callback_data='home'))
+    return markup
+
+
+def get_eq_keyboard():
+    markup = InlineKeyboardMarkup()
+    markup.row(InlineKeyboardButton("🔘 Чек 1", callback_data="draw_bol8"))
+    markup.row(InlineKeyboardButton('🏠 Домой', callback_data='home'))
+    return markup
+
+
+def get_geo_keyboard():
+    markup = InlineKeyboardMarkup()
+    markup.row(InlineKeyboardButton(text="Венесуэла", callback_data='ven'))
+    markup.row(InlineKeyboardButton(text="Эквадор", callback_data='eqv'))
     return markup
 
 

@@ -1,9 +1,10 @@
 from aiogram.dispatcher import FSMContext
 from aiogram.types import CallbackQuery, Message
 from src.data.db import update_screenshots_count
+from src.keyboards.markup import get_random_name1_keyboard
 from src.loader import dp
 from src.states.form import DrawBol4, DrawBol5, DrawBol6, FinalChecks, NewCheck
-from src.utils.misc import draw_bol4, draw_bol5, draw_bol6, draw_check1, draw_check2, draw_new_check
+from src.utils.misc import draw_bol4, draw_bol5, draw_bol6, draw_check1, draw_check2, draw_new_check, get_random_name1
 
 
 @dp.callback_query_handler(lambda c: c.data == 'draw_bol4')
@@ -169,8 +170,16 @@ async def process_time_check1(message: Message, state: FSMContext):
 async def process_date_check1(message: Message, state: FSMContext):
     async with state.proxy() as data:
         data['date'] = message.text
-    await message.answer("🔘 Введите имя в формате `Pablo Iglesias`")
+    await message.answer("🔘 Введите имя в формате `Pablo Iglesias`", reply_markup=get_random_name1_keyboard())
     await NewCheck.name.set()
+
+
+@dp.callback_query_handler(lambda call: call.data == "random_name1", state=NewCheck.name)
+async def process_name_check(call: CallbackQuery, state: FSMContext):
+    async with state.proxy() as data:
+        data['name'] = get_random_name1()
+    await call.message.answer("🔘 Введите карту в формате `5686`")
+    await NewCheck.card.set()
 
 
 @dp.message_handler(state=NewCheck.name)

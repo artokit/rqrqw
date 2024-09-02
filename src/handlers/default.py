@@ -73,12 +73,30 @@ async def show_rendering(callback_query: types.CallbackQuery):
     await bot.answer_callback_query(callback_query.id)
 
 
-@dp.callback_query_handler(lambda c: c.data == 'all_checks')
+@dp.callback_query_handler(lambda c: c.data == "ven")
+async def show_ven(callback: types.CallbackQuery):
+    await callback.message.edit_caption(
+        caption="*㊙️ Выберите действие:*",
+        reply_markup=get_ven_checks_keyboard()
+    )
+    await bot.answer_callback_query(callback.id)
+
+
+@dp.callback_query_handler(lambda c: c.data == "eqv")
+async def show_ven(callback: types.CallbackQuery):
+    await callback.message.edit_caption(
+        caption="*㊙️ Выберите действие:*",
+        reply_markup=get_eq_keyboard()
+    )
+    await bot.answer_callback_query(callback.id)
+
+
+@dp.callback_query_handler(lambda c: c.data == 'geo')
 async def show_rendering(callback_query: types.CallbackQuery):
     await bot.edit_message_caption(chat_id=callback_query.message.chat.id,
                                    message_id=callback_query.message.message_id,
-                                   caption='*㊙️ Выберите действие:*',
-                                   reply_markup=all_checks_keyboard())
+                                   caption='*㊙️ Выберите гео:*',
+                                   reply_markup=get_geo_keyboard())
 
     await bot.answer_callback_query(callback_query.id)
 
