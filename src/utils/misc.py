@@ -298,7 +298,7 @@ async def create_win(time, name, card, comm, popoln, money, money2, text):
     d.text((460, 148), money + '$', font=font_money, fill=(201, 204, 213), anchor='rs')
     d.text((87, 337), money2 + '$', font=font_money2, fill=(59, 59, 59))
     d.text((78, 543), card, font=font_card, fill=(145, 147, 159))
-    d.text((290, 888), 'Continuar con la comision (' + comm + '$)', font=font_comm, fill=(201, 204, 213), anchor='ma')
+    d.text((290, 888), 'Continuar con la comision ($' + comm + ')', font=font_comm, fill=(201, 204, 213), anchor='ma')
     d.text((77, 648), popoln + ' $', font=font_popoln, fill=(59, 59, 59))
     if text.count("\n") == 0:
         d.text((290, 815), text, font=font_text, fill=(145, 147, 159), anchor='ma')
